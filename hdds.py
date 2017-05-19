@@ -102,3 +102,5 @@ for dev in devs:
         print " %3s|%7s|%7s|%7s|%7s|%8s|%7s| %s" %( dev, rellocated, pending, uncorrectable, diskerr, hours, diskstatus, ata)
     else:
         print " %3s|%7s|%7s|%7s|%7s|%8s|%7s| %s" %( dev, rellocated, pending, uncorrectable, diskerr, hours, diskstatus, ata)
+
+print "\n\nHDDs test tool. For more information read https://www.backblaze.com/blog/what-smart-stats-indicate-hard-drive-failures/"

@@ -89,26 +89,26 @@ for dev in devs:
             pending=line.split(' ')[-1]
             pending=int(pending)
         if re.search('Offline_Uncorrectable', line):
-           uncorrectable=line.split(' ')[-1]
-           uncorrectable=int(uncorrectable)
+            uncorrectable=line.split(' ')[-1]
+            uncorrectable=int(uncorrectable)
         if re.search('ATA Error Count:', line):
             diskerr=line.split(' ')[3]
             diskerr=int(diskerr)
-	if re.search('Power_On_Hours', line):
-	    hours=line.split(' ')[-1]
-	    hours=int(hours)
-	for v in [rellocated, pending, uncorrectable, diskerr]:
-	    if bool(v):
-		c += 1
-		remap += v
-        if c == 0 and remap == 0:
-            diskstatus=statuses['OK']
-	if c > 1 or remap > 0:
-	    diskstatus=statuses['WARNING']
-	if c > 2 or remap > 50:
-            diskstatus=statuses['PREFAIL']
-        if c > 3 or remap > 100:
-            diskstatus=statuses['FAILURE']
+        if re.search('Power_On_Hours', line):
+            hours=line.split(' ')[-1]
+            hours=int(hours)
+        for v in [rellocated, pending, uncorrectable, diskerr]:
+            if bool(v):
+                c += 1
+                remap += v
+    if c == 0 and remap == 0:
+        diskstatus=statuses['OK']
+    if c > 1 or remap > 0:
+        diskstatus=statuses['WARNING']
+    if c > 2 or remap > 50:
+        diskstatus=statuses['PREFAIL']
+    if c > 3 or remap > 100:
+        diskstatus=statuses['FAILURE']
 
 
     if ata in zdevs:
@@ -116,4 +116,4 @@ for dev in devs:
     else:
         print " %3s|%12s|%7s|%7s|%7s|%7s|%8s|%7s| %s" %( dev, "NOT_IN_ZPOOL", rellocated, pending, uncorrectable, diskerr, hours, diskstatus, ata)
 
-print "HDDs test tool. For more information read https://www.backblaze.com/blog/what-smart-stats-indicate-hard-drive-failures/"
+print "\n\nHDDs test tool. For more information read https://www.backblaze.com/blog/what-smart-stats-indicate-hard-drive-failures/"
