@@ -90,11 +90,11 @@ for dev in devs:
                 remap += v
     if c == 0 and remap == 0:
         diskstatus=statuses['OK']
-    if c == 1 and remap in range(1, 99):
+    if c == 1 and remap in range(1, 100):
         diskstatus=statuses['WARNING']
-    if c == 2 or remap in range(100, 149):
+    if c == 2 or remap in range(100, 150):
         diskstatus=statuses['PREFAIL']
-    if c > 2 or remap > 150:
+    if c > 2 or remap >= 150:
         diskstatus=statuses['FAILURE']
 
 
