@@ -103,7 +103,7 @@ for dev in devs:
                 remap += v
     if c == 0 and remap == 0:
         diskstatus=statuses['OK']
-    if c == 1 and remap in range(1, 100):
+    if c == 1 and remap in range(1, 100) or hours > 42424:
         diskstatus=statuses['WARNING']
     if c == 2 or remap in range(100, 150):
         diskstatus=statuses['PREFAIL']
